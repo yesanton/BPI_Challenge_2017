@@ -8,6 +8,5 @@ python application_xes_to_csv.py -f bpi2017_file_name
 
 works with python 3
 
-
 Dataset:
 https://data.4tu.nl/repository/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b
