@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import xmltodict
 import pandas as pd
 from collections import OrderedDict
@@ -17,7 +16,7 @@ def parse_arg():
 
 def parse_event(event):
     ret = {}
-    for k, v in event.iteritems():
+    for k, v in event.items():
         if not isinstance(v, OrderedDict):
             # This is a list
             for att in v:
@@ -30,7 +29,7 @@ def parse_event(event):
 
 def parse_trace(trace):
     trace_info = {}
-    for k, v in trace.iteritems():
+    for k, v in trace.items():
         if k != 'event':
             if not isinstance(v, OrderedDict):
                 for att in v:
@@ -70,9 +69,9 @@ def parse_log(log):
 if __name__ == "__main__":
     ns = parse_arg()
 
-    print ns.out_dir, ns.file
+    print (ns.out_dir, ns.file)
 
-    print 'Parsing log...'
+    print ('Parsing log...')
     with open(ns.file) as fd:
         doc = xmltodict.parse(fd.read())
 
@@ -80,8 +79,9 @@ if __name__ == "__main__":
 
     trace_df, event_df = parse_log(log)
 
-    print 'Write to CSV files...'
+    print ('Write to CSV files...')
 
     trace_df.to_csv(os.path.join(ns.out_dir, 'applications.csv'), index=False)
 
     event_df.to_csv(os.path.join(ns.out_dir, 'events.csv'), index=False)
+
